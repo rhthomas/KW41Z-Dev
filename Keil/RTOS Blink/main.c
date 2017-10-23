@@ -9,9 +9,10 @@ void LEDTask1(void *pvPs);
 void LEDTask2(void *pvPs);
 TickType_t tDelay_ms(const float ms);
 
-//----- Main function. -----/
+//----- Main function. -----//
 int main(void)
 {
+    // Initialise the LED_FRDM-KW41Z.c library.
     LED_Initialize();
     
     // Create red LED task.
