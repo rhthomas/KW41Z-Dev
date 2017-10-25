@@ -1,8 +1,13 @@
 # Keil 
 Keil/RTOS Blink/Listings/
 Keil/RTOS Blink/Objects/
-*.uvguix.*
-*.uvoptx
-JLink*
+Keil/RTOS Blink/*.uvguix.*
+Keil/RTOS Blink/*.uvoptx
+Keil/RTOS Blink/JLink*
 
-
+# MCUXpresso
+MCUXpresso/RTOS_Blink/*.launch # JLink launch files
+MCUXpresso/RTOS_Blink/Debug # Debug/ made on build
+MCUXpresso/RTOS_Blink/.project
+MCUXpresso/RTOS_Blink/.cproject
+MCUXpresso/RTOS_Blink/.settings/

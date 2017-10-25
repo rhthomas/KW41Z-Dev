@@ -1,20 +1,29 @@
-//----- Header includes. -----//
+//---------------------------------------------//
+//----- Header includes                   -----//
+//---------------------------------------------//
+
 #include "MKW41Z4.h"
 #include "Board_LED.h"
 #include "FreeRTOS.h"
 #include "task.h"
 
-//----- Function prototypes. -----//
+//---------------------------------------------//
+//----- Function prototypes               -----//
+//---------------------------------------------//
+
 void LEDTask1(void *pvPs);
 void LEDTask2(void *pvPs);
 TickType_t tDelay_ms(const float ms);
 
-//----- Main function. -----//
+//---------------------------------------------//
+//----- Main function                     -----//
+//---------------------------------------------//
+
 int main(void)
 {
     // Initialise the LED_FRDM-KW41Z.c library.
     LED_Initialize();
-    
+
     // Create red LED task.
     xTaskCreate(
         LEDTask1, // Task function.
@@ -24,7 +33,7 @@ int main(void)
         (unsigned portBASE_TYPE)tskIDLE_PRIORITY+1, // Priority.
         (xTaskHandle *)NULL // Pointer to reference of the task.
     );
-        
+
     // Create green LED task.
     xTaskCreate(
         LEDTask2, // Task function.
@@ -34,12 +43,16 @@ int main(void)
         (unsigned portBASE_TYPE)tskIDLE_PRIORITY+1, // Priority.
         (xTaskHandle *)NULL // Pointer to reference of the task.
     );
-        
+
     // Start OS scheduler.
     vTaskStartScheduler(); // No return!
-   
-    return 0; 
+
+    return 0;
 }
+
+//---------------------------------------------//
+//----- RTOS tasks                        -----//
+//---------------------------------------------//
 
 /**
     \brief Task to toggle red LED every 500ms.
