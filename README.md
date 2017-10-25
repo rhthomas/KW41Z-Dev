@@ -13,7 +13,7 @@ KW41Z-Dev/
 ├── GNU/
 │   └── README.md
 ├── Keil/
-│   ├── README.md
+│   └── README.md
 ├── MCUXpresso/
 │   └── README.md
 └── README.md
