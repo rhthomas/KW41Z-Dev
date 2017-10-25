@@ -1,6 +1,6 @@
 # Keil 
-Objects/  # Generated on build
-Listings/ # Generated on build
+Keil/RTOS Blink/Listings/
+Keil/RTOS Blink/Objects/
 *.uvguix.*
 *.uvoptx
 JLink*
