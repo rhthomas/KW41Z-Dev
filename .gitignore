@@ -1,5 +1,6 @@
 # Keil 
-Objects/
+Objects/  # Generated on build
+Listings/ # Generated on build
 *.uvguix.*
 *.uvoptx
 JLink*
