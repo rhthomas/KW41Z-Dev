@@ -4,7 +4,7 @@
  *      *** Do not modify ! ***
  *
  * Project: 'blinky' 
- * Target:  'Target 1' 
+ * Target:  'Blinky RAM' 
  */
 
 #ifndef RTE_COMPONENTS_H
