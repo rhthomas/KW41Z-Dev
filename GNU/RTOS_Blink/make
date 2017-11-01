@@ -41,7 +41,7 @@ arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"CMSIS/system_MKW41Z4.d"
 
 #---------------------------------
 
-# arm-none-eabi-gcc -nostdlib -Xlinker -Map="RTOS_Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0plus -mthumb -T RTOS_Blink_Debug.ld -o "RTOS_Blink.axf"  startup/startup_mkw41z4.o  source/Board_LED.o source/RTOS_Blink.o source/mtb.o  freertos/croutine.o freertos/event_groups.o freertos/fsl_tickless_lptmr.o freertos/fsl_tickless_systick.o freertos/heap_4.o freertos/list.o freertos/port.o freertos/queue.o freertos/tasks.o freertos/timers.o  CMSIS/system_MKW41Z4.o
+arm-none-eabi-gcc -nostdlib -Xlinker -Map="RTOS_Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0plus -mthumb -T RTOS_Blink_Debug.ld -o "RTOS_Blink.axf"  startup/startup_mkw41z4.o  source/Board_LED.o source/RTOS_Blink.o source/mtb.o  freertos/croutine.o freertos/event_groups.o freertos/fsl_tickless_lptmr.o freertos/fsl_tickless_systick.o freertos/heap_4.o freertos/list.o freertos/port.o freertos/queue.o freertos/tasks.o freertos/timers.o  CMSIS/system_MKW41Z4.o
 #
 # arm-none-eabi-size "RTOS_Blink.axf";
 

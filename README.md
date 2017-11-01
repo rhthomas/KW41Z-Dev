@@ -19,6 +19,8 @@ KW41Z-Dev/
 └── README.md
 ```
 
+---
+
 ## Simple RTOS Program
 
 The RTOS program that will be written for the processor will simply toggle two different LEDs with different periods. A red on at 500ms, and a green one at 330ms.
@@ -85,3 +87,52 @@ portTickType tDelay_ms(const float ms)
     return (portTickType)(ms / portTICK_PERIOD_MS);
 }
 ```
+
+---
+
+## Comparison Between Development Platforms
+
+### ARM Keil
+
+#### Pros
++ Easy debugging interface.
++ Able to batch build for multiple targets.
+
+#### Cons
+- 32kB code limit.
+- Very expensive full version of the software.
+
+### MCUXpresso
+
+#### Pros
++ Cross-platform IDE.
++ Free.
++ IDEs allow more time writing code rather than wasting time figuring out the toolchains.
++ Easy debugging interface.
+
+#### Cons
+- Based on Eclipse so is a fairly heavy editor for embedded platforms.
+    - Most of Eclipse isn't even used!
+
+### GNU Toolchains
+
+#### Pros
++ Free.
++ You know exactly what files are being compiled into your project.
+    + More control over code size.
+    + More control over security.
+        + Not pulling in random libraries you didn't write.
++ Lightweight IDEs.
+    + Just need a text editor and a terminal.
+    + Use whatever text editor you like.
+        + Atom
+        + Vi/Vim
+        + Nano
+        + Notepad++
+
+#### Cons
+- Makefiles can be very complicated/convoluted.
+    - Spend more time debugging makefiles rather than actual code.
+- More complicated methods of making linker scripts.
+- More time spent setting up the toolchains rather than actually writing functional code for the target.
+- GDB in the command line has a steep learning curve.

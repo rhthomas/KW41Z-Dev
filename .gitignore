@@ -1,1 +1,17 @@
+.*
+*.scvd
 
+**/Listings/
+**/Objects/
+*.uvguix.*
+*.uvoptx
+JLink*
+
+**/Debug/
+**/.settings/
+.project
+.cproject
+
+*.d
+*.o
+.*
