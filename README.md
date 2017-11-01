@@ -95,12 +95,14 @@ portTickType tDelay_ms(const float ms)
 ### ARM Keil
 
 #### Pros
-+ Easy debugging interface.
++ Easy to use debugging interface.
 + Able to batch build for multiple targets.
++ Well designed and easy to use package manager.
 
 #### Cons
 - 32kB code limit.
 - Very expensive full version of the software.
+- Pulls in files from a variety of locations. Not sure what you're including.
 
 ### MCUXpresso
 
@@ -109,6 +111,7 @@ portTickType tDelay_ms(const float ms)
 + Free.
 + IDEs allow more time writing code rather than wasting time figuring out the toolchains.
 + Easy debugging interface.
++ Familiarity to those who have used Eclipse tools in the past.
 
 #### Cons
 - Based on Eclipse so is a fairly heavy editor for embedded platforms.
