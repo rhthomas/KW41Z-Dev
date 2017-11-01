@@ -1,7 +1,5 @@
 # ARM-Cortex Development using Keil IDE
 
----
-
 ## Flashing
 
 To flash the device:
