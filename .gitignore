@@ -6,6 +6,13 @@
 *.uvguix.*
 *.uvoptx
 JLink*
+*.map
+*.axf
+*.dep
+*.lst
+*.launch
+*.lnp
+*.htm
 
 **/Debug/
 **/.settings/
