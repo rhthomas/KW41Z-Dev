@@ -5,6 +5,7 @@
 **/Objects/
 *.uvguix.*
 *.uvoptx
+*.uvprojx
 JLink*
 *.map
 *.axf
