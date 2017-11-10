@@ -1,48 +1,33 @@
 #!/bin/bash
 
 DEFINES="-DDEBUG -DCPU_MKW41Z512VHT4"
-#-D__MCUXPRESSO -D__USE_CMSIS -DCR_INTEGER_PRINTF -D__REDLIB__ -DSDK_OS_FREE_RTOS -DFSL_RTOS_FREE_RTOS -DCPU_MKW41Z512VHT4_cm0plus
-
 INCLUDES="-Isource -I. -ICMSIS -Ifreertos -Istartup -I/Applications/MCUXpressoIDE_10.0.2_411/ide/tools/features/include"
-
-FLAGS="-O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0plus -mthumb"
-#-specs=redlib.specs -D__REDLIB__
-
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"startup/startup_mkw41z4.d" -MT"startup/startup_mkw41z4.o" -MT"startup/startup_mkw41z4.d" -o "startup/startup_mkw41z4.o" "startup/startup_mkw41z4.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"source/Board_LED.d" -MT"source/Board_LED.o" -MT"source/Board_LED.d" -o "source/Board_LED.o" "source/Board_LED.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"source/RTOS_Blink.d" -MT"source/RTOS_Blink.o" -MT"source/RTOS_Blink.d" -o "source/RTOS_Blink.o" "source/RTOS_Blink.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"source/mtb.d" -MT"source/mtb.o" -MT"source/mtb.d" -o "source/mtb.o" "source/mtb.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/croutine.d" -MT"freertos/croutine.o" -MT"freertos/croutine.d" -o "freertos/croutine.o" "freertos/croutine.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/event_groups.d" -MT"freertos/event_groups.o" -MT"freertos/event_groups.d" -o "freertos/event_groups.o" "freertos/event_groups.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/fsl_tickless_lptmr.d" -MT"freertos/fsl_tickless_lptmr.o" -MT"freertos/fsl_tickless_lptmr.d" -o "freertos/fsl_tickless_lptmr.o" "freertos/fsl_tickless_lptmr.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/fsl_tickless_systick.d" -MT"freertos/fsl_tickless_systick.o" -MT"freertos/fsl_tickless_systick.d" -o "freertos/fsl_tickless_systick.o" "freertos/fsl_tickless_systick.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/heap_4.d" -MT"freertos/heap_4.o" -MT"freertos/heap_4.d" -o "freertos/heap_4.o" "freertos/heap_4.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/list.d" -MT"freertos/list.o" -MT"freertos/list.d" -o "freertos/list.o" "freertos/list.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/port.d" -MT"freertos/port.o" -MT"freertos/port.d" -o "freertos/port.o" "freertos/port.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/queue.d" -MT"freertos/queue.o" -MT"freertos/queue.d" -o "freertos/queue.o" "freertos/queue.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/tasks.d" -MT"freertos/tasks.o" -MT"freertos/tasks.d" -o "freertos/tasks.o" "freertos/tasks.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"freertos/timers.d" -MT"freertos/timers.o" -MT"freertos/timers.d" -o "freertos/timers.o" "freertos/timers.c"
-
-arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MMD -MP -MF"CMSIS/system_MKW41Z4.d" -MT"CMSIS/system_MKW41Z4.o" -MT"CMSIS/system_MKW41Z4.d" -o "CMSIS/system_MKW41Z4.o" "CMSIS/system_MKW41Z4.c"
+FLAGS="--specs=nosys.specs -O0 -fno-common -g3 -Wall -c -fmessage-length=0 -fno-builtin -ffunction-sections -fdata-sections -mcpu=cortex-m0plus -mthumb"
 
 #---------------------------------
 
-arm-none-eabi-gcc -nostdlib -Xlinker -Map="RTOS_Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0plus -mthumb -T RTOS_Blink_Debug.ld -o "RTOS_Blink.axf"  startup/startup_mkw41z4.o  source/Board_LED.o source/RTOS_Blink.o source/mtb.o  freertos/croutine.o freertos/event_groups.o freertos/fsl_tickless_lptmr.o freertos/fsl_tickless_systick.o freertos/heap_4.o freertos/list.o freertos/port.o freertos/queue.o freertos/tasks.o freertos/timers.o  CMSIS/system_MKW41Z4.o
-#
+echo "Compiling..."
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "startup/startup_mkw41z4.o" "startup/startup_mkw41z4.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "source/Board_LED.o" "source/Board_LED.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "source/RTOS_Blink.o" "source/RTOS_Blink.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o  "source/mtb.o" "source/mtb.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/croutine.o" "freertos/croutine.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/event_groups.o" "freertos/event_groups.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/fsl_tickless_lptmr.o" "freertos/fsl_tickless_lptmr.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/fsl_tickless_systick.o" "freertos/fsl_tickless_systick.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/heap_4.o" "freertos/heap_4.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/list.o" "freertos/list.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/port.o" "freertos/port.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/queue.o" "freertos/queue.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/tasks.o" "freertos/tasks.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "freertos/timers.o" "freertos/timers.c"
+arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -o "CMSIS/system_MKW41Z4.o" "CMSIS/system_MKW41Z4.c"
+
+#---------------------------------
+
+echo "Linking..."
+arm-none-eabi-gcc --specs=nosys.specs -Xlinker -Map="RTOS_Blink.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -mcpu=cortex-m0plus -mthumb -T RTOS_Blink_Debug.ld -o "RTOS_Blink.axf"  startup/startup_mkw41z4.o  source/Board_LED.o source/RTOS_Blink.o source/mtb.o  freertos/croutine.o freertos/event_groups.o freertos/fsl_tickless_lptmr.o freertos/fsl_tickless_systick.o freertos/heap_4.o freertos/list.o freertos/port.o freertos/queue.o freertos/tasks.o freertos/timers.o  CMSIS/system_MKW41Z4.o
+
 # arm-none-eabi-size "RTOS_Blink.axf";
 
 # find . -name '*.o' -or -name '*.d' | xargs rm
