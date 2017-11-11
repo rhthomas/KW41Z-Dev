@@ -11,11 +11,17 @@ The directory structure for this repository is as follows:
 ```
 KW41Z-Dev/
 ├── GNU/
-│   └── README.md
+│   ├── README.md
+│   ├── RTOS_Blink/
+│   └── img/
 ├── Keil/
-│   └── README.md
+│   ├── README.md
+│   ├── RTOS\ Blink/
+│   └── img/
 ├── MCUXpresso/
-│   └── README.md
+│   ├── README.md
+│   ├── RTOS_Blink/
+│   └── img/
 └── README.md
 ```
 
