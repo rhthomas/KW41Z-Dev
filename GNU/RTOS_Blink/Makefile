@@ -57,7 +57,7 @@ LDFLAGS += -T RTOS_Blink_Debug.ld
 # TARGET RULES
 #-------------------------------------------------------------------------------
 
-all: RTOS_Blink.bin
+all: RTOS_Blink.elf
 
 -include Makefile.deps
 
@@ -68,17 +68,22 @@ Makefile.deps: $(SRC)
 	@echo 'Compiling: $@'
 	$(CC) $(CFLAGS) $(INC) -o $@ $<
 
-RTOS_Blink.bin: $(OBJ)
+RTOS_Blink.elf: $(OBJ)
 	@echo ' '
 	@echo 'Building target: $@'
 	$(CC) $(LDFLAGS) -o $@ $(OBJ)
 	@echo 'Finished building target: $@'
 
-flash: RTOS_Blink.bin
-	# TODO WRITE THIS TARGET
+flash: RTOS_Blink.elf
+	@echo 'Copying to binary...'
+	arm-none-eabi-objcopy -O binary $< RTOS_Blink.bin
+	@echo 'Programming...'
+	cp RTOS_Blink.bin /Volumes/FRDM-KW41ZJ
+	@echo 'Done.'
 
 clean:
 	@echo 'Cleaning...'
 	-rm $(OBJ)
 	-rm Makefile.deps
+	-rm RTOS_Blink.elf
 	-rm RTOS_Blink.bin
