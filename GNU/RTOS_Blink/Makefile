@@ -5,7 +5,7 @@
 #-------------------------------------------------------------------------------
 
 CC        = arm-none-eabi-gcc
-MAKEFLAGS = -j4
+MAKEFLAGS = -j4 --quiet
 
 #-------------------------------------------------------------------------------
 # PROJECT FILES
@@ -57,7 +57,7 @@ LDFLAGS += -T RTOS_Blink_Debug.ld
 # TARGET RULES
 #-------------------------------------------------------------------------------
 
-all: RTOS_Blink.axf
+all: RTOS_Blink.bin
 
 -include Makefile.deps
 
@@ -65,18 +65,20 @@ Makefile.deps: $(SRC)
 	$(CC) $(CFLAGS) $(INC) -MM $^ > Makefile.deps
 
 %.o: %.c
+	@echo 'Compiling: $@'
 	$(CC) $(CFLAGS) $(INC) -o $@ $<
 
-RTOS_Blink.axf: $(OBJ)
+RTOS_Blink.bin: $(OBJ)
+	@echo ' '
 	@echo 'Building target: $@'
 	$(CC) $(LDFLAGS) -o $@ $(OBJ)
 	@echo 'Finished building target: $@'
 
-#TODO - Not yet working
-flash: RTOS_Blink.axf
-	arm-none-eabi-gdb -x flash.txt
+flash: RTOS_Blink.bin
+	# TODO WRITE THIS TARGET
 
 clean:
+	@echo 'Cleaning...'
 	-rm $(OBJ)
 	-rm Makefile.deps
-	-rm RTOS_Blink.axf
+	-rm RTOS_Blink.bin
