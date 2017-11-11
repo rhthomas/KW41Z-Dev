@@ -101,11 +101,29 @@ clean:
 	@echo 'Cleaning...'
 	-rm $(OBJ)
 	-rm Makefile.deps
-	-rm RTOS_Blink.bin
+	-rm $(TARGET).elf
+	-rm $(TARGET).bin
 ```
 
 ---
 
-## Debugging
+## Programming
 
-The Makefile works to compile and link the code into a binary file, however I have not yet figured out how to flash the board or debug on the target.
+The `flash` target in the Makefile converts the compiled ELF file into a binary file which can be copied onto the board over the USB interface.
+
+```makefile
+flash: $(TARGET).elf
+	@echo 'Copying to binary...'
+	arm-none-eabi-objcopy -O binary $< $(TARGET).bin
+	@echo 'Programming...'
+	cp $(TARGET).bin /Volumes/FRDM-KW41ZJ
+	@echo 'Done.'
+```
+
+The terminal output when flashing is shown below.
+
+```
+Copying to binary...
+Programming...
+Done.
+```
