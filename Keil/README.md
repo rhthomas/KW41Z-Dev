@@ -108,3 +108,33 @@ Keil offers a number of tools to help the debugging process, such as:
 * And more…
 
 The idea of these tools is to provide detail of the current states of the processor without obfuscating the developer. That way bugs can be found and acted upon very quickly.
+
+### Using the MTB
+
+To use the MTB, reference to [App Node 232](http://www.keil.com/appnotes/docs/apnt_232.asp) was required. Through various other sources it was clear that the MTB doesn't work with the J-LINK debugger and so the CMSIS-DAP debugger was installed.
+
+#### Installing Bootloader/Debugger
+
+The CMSIS-DAP debugger can be found [here](https://www.nxp.com/support/developer-resources/run-time-software/kinetis-developer-resources/ides-for-kinetis-mcus/opensda-serial-and-debug-adapter:OPENSDA#FRDM-KW41Z). The binary that you download for the board is copied onto the USB volume when in bootloader mode. Next you open up Keil to program the board.
+
+Be sure to swap the J-LINK debugger for CMSIS-DAP in Target Options > Debug > Use...
+
+#### Programming and Reading the MTB
+
+Adapted from section 18 of the aforementioned app note.
+
+1. Within the app note example code there is `DBG-MTB.ini`. Go to Target Options > Debug and add the file to the box saying "Load Application at Startup". Then press Edit, this opens the .ini file into the editor.
+
+    ![Load .ini File](img/add-ini.png)
+
+2. Within the editor window (in configuration wizard) you can choose to enable the MTB and allocate buffer space etc.
+
+    ![Edit MTB](img/edit-mtb.png)
+
+3. Then build the target as before, and enter debug mode (![Debug Mode](img/debug.png)).
+
+#### The Trace Output
+
+From debug mode in Keil, after programming the board, open Trace Data to show the contents of the MTB.
+
+![Trace Data](img/mtb-trace.png)
